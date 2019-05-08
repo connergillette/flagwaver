@@ -1,6 +1,11 @@
 import THREE from 'three';
-import { Side, FlagpoleType } from '../constants';
-import { createPoleGeometryTypeI } from './FlagpoleGeometryUtils';
+import {
+    Side,
+    FlagpoleType
+} from '../constants';
+import {
+    createPoleGeometryTypeI
+} from './FlagpoleGeometryUtils';
 
 /**
  * @class Flagpole
@@ -26,9 +31,9 @@ export default class Flagpole {
 
         // Material
         const material = new THREE.MeshPhongMaterial({
-            color:     0x6A6A6A,
-            specular:  0xffffff,
-            metal:     true,
+            color: 0x6A6A6A,
+            specular: 0xffffff,
+            metal: true,
             shininess: 18
         });
 
@@ -36,7 +41,7 @@ export default class Flagpole {
         const mesh = new THREE.Mesh(geometry, material);
 
         mesh.receiveShadow = true;
-        mesh.castShadow    = true;
+        mesh.castShadow = true;
 
         this.mesh = mesh;
         this.object = this.mesh;
@@ -45,14 +50,14 @@ export default class Flagpole {
     static defaults = (() => {
         const o = {};
 
-        o.flagpoleType    = FlagpoleType.VERTICAL;
-        o.poleWidth       = 6;
-        o.poleLength      = 8192;
-        o.poleCapSize     = o.poleWidth + 2;
-        o.crossbarWidth   = o.poleWidth - 2;
-        o.crossbarLength  = 200;
+        o.flagpoleType = FlagpoleType.VERTICAL;
+        o.poleWidth = 6;
+        o.poleLength = 8192;
+        o.poleCapSize = o.poleWidth + 2;
+        o.crossbarWidth = o.poleWidth - 2;
+        o.crossbarLength = 200;
         o.crossbarCapSize = o.crossbarWidth + 2;
-        o.poleTopOffset   = 60;
+        o.poleTopOffset = 60;
 
         return o;
     })();
@@ -70,7 +75,9 @@ export default class Flagpole {
 
     addFlag(flag) {
         flag.unpin();
-        flag.pin({ edges: [Side.LEFT] });
+        flag.pin({
+            edges: [Side.LEFT]
+        });
         flag.setLengthConstraints(Side.LEFT);
     }
 }

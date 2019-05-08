@@ -7,7 +7,9 @@
  *
  */
 
-import HashState, { isHistorySupported } from './helpers/HashState';
+import HashState, {
+    isHistorySupported
+} from './helpers/HashState';
 import initFlagWaverApp from './main';
 
 var app;
@@ -16,7 +18,8 @@ var app;
 // Flag Waver UI
 //
 
-;(function (window, document, $, rivets, undefined) {
+;
+(function (window, document, $, rivets, undefined) {
     //
     // Vars
     //
@@ -37,10 +40,10 @@ var app;
         isWindOn: true,
         flag: {
             imgUploadMode: 'web',
-            imgURL:        '',
-            imgFilePath:   '',
-            hoisting:      'dexter',
-            topEdge:       'top'
+            imgURL: '',
+            imgFilePath: '',
+            hoisting: 'dexter',
+            topEdge: 'top'
         }
     };
 
@@ -74,7 +77,9 @@ var app;
                 flagWaverOpts.flag.imgFilePath = '';
 
                 if (flagWaverOpts.flag.imgURL) {
-                    setFlagOpts({ imgSrc: flagWaverOpts.flag.imgURL });
+                    setFlagOpts({
+                        imgSrc: flagWaverOpts.flag.imgURL
+                    });
                     toHash();
                 }
             },
@@ -86,18 +91,24 @@ var app;
 
                 reader.onload = function (e) {
                     flagWaverOpts.flag.imgURL = '';
-                    setFlagOpts({ imgSrc: e.target.result });
+                    setFlagOpts({
+                        imgSrc: e.target.result
+                    });
                     toHash();
                 };
 
                 reader.readAsDataURL(file);
             },
             setHoisting: function () {
-                setFlagOpts({ hoisting: flagWaverOpts.flag.hoisting });
+                setFlagOpts({
+                    hoisting: flagWaverOpts.flag.hoisting
+                });
                 toHash();
             },
             setTopEdge: function () {
-                setFlagOpts({ topEdge: flagWaverOpts.flag.topEdge });
+                setFlagOpts({
+                    topEdge: flagWaverOpts.flag.topEdge
+                });
                 toHash();
             }
         }
@@ -144,7 +155,9 @@ var app;
     }
 
     function setWind(value) {
-        app.module('windModule').setOptions({ speed: value });
+        app.module('windModule').setOptions({
+            speed: value
+        });
         app.module('windForceModule').needsUpdate = true;
     }
 
@@ -157,9 +170,9 @@ var app;
             if (window.location.href.search(/\#(\!|\?)/) >= 0) {
                 flagData = hashState.getState();
 
-                flagOpts.imgURL   = flagData.src;
+                flagOpts.imgURL = flagData.src;
                 flagOpts.hoisting = flagData.hoisting;
-                flagOpts.topEdge  = flagData.topedge;
+                flagOpts.topEdge = flagData.topedge;
             } else {
                 // Compatibility with old version links
                 flagOpts.imgURL = window.unescape(hashFrag);
@@ -169,7 +182,7 @@ var app;
         $.extend(flagWaverOpts.flag, flagWaverDefaults.flag, flagOpts);
 
         setFlagOpts({
-            imgSrc: flagWaverOpts.flag.imgURL || './assets/img/NZ.2b.png',
+            imgSrc: flagWaverOpts.flag.imgURL || './assets/img/KA_flag.png',
             topEdge: flagWaverOpts.flag.topEdge,
             hoisting: flagWaverOpts.flag.hoisting
         });
@@ -178,9 +191,9 @@ var app;
     function toHash() {
         if (flagWaverOpts.flag.imgURL) {
             hashState.setState({
-                src:      flagWaverOpts.flag.imgURL,
+                src: flagWaverOpts.flag.imgURL,
                 hoisting: flagWaverOpts.flag.hoisting,
-                topedge:  flagWaverOpts.flag.topEdge
+                topedge: flagWaverOpts.flag.topEdge
             });
         } else {
             hashState.setState(null);
@@ -214,9 +227,9 @@ var app;
     //
 
     rivets.configure({
-        prefix:             'data-rv',
-        preloadData:        true,
-        rootInterface:      '.',
+        prefix: 'data-rv',
+        preloadData: true,
+        rootInterface: '.',
         templateDelimiters: ['{', '}']
     });
 
@@ -239,13 +252,13 @@ var app;
 
         $controlImgUpload = $('#control-img-upload');
         $setImgUploadMode = $('#set-img-upload-mode');
-        $inputImgLink     = $('#input-img-link');
-        $setImgLink       = $('#set-img-link');
-        $setHoisting      = $('#set-hoisting');
-        $setTopEdge       = $('#set-top-edge');
-        $openImgFile      = $('#open-img-file');
-        $infoImgFile      = $('#info-img-file');
-        $windToggle       = $('#wind-toggle');
+        $inputImgLink = $('#input-img-link');
+        $setImgLink = $('#set-img-link');
+        $setHoisting = $('#set-hoisting');
+        $setTopEdge = $('#set-top-edge');
+        $openImgFile = $('#open-img-file');
+        $infoImgFile = $('#info-img-file');
+        $windToggle = $('#wind-toggle');
 
         //
         // Init
@@ -290,7 +303,7 @@ var app;
 
         // Load flag image from url
         rivets.bind($inputImgLink, flagWaverModel);
-        rivets.bind($setImgLink,   flagWaverModel);
+        rivets.bind($setImgLink, flagWaverModel);
 
         // Load flag image from file
         $openImgFile
@@ -305,8 +318,8 @@ var app;
         rivets.bind($infoImgFile, flagWaverModel);
 
         // Settings
-        rivets.bind($windToggle,  flagWaverModel);
+        rivets.bind($windToggle, flagWaverModel);
         rivets.bind($setHoisting, flagWaverModel);
-        rivets.bind($setTopEdge,  flagWaverModel);
+        rivets.bind($setTopEdge, flagWaverModel);
     });
 })(window, document, jQuery, rivets);

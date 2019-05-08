@@ -22,7 +22,11 @@ export default class App extends ModuleSystem {
 
         const settings = Object.assign({}, this.constructor.defaults, options);
 
-        const { scene, camera, renderer } = settings;
+        const {
+            scene,
+            camera,
+            renderer
+        } = settings;
 
         const onStart = settings.onStart.bind(this);
         const onUpdate = settings.onUpdate.bind(this);
@@ -81,6 +85,8 @@ export default class App extends ModuleSystem {
 
         // Init
         scene.add(camera);
+        scene.position.y = -300
+
         clock.start();
         start();
         loop();

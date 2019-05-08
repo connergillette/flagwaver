@@ -30,7 +30,7 @@ function buildCamera() {
         10000
     );
 
-    camera.position.y = 50;
+    camera.position.y = 100;
     camera.position.z = 2000;
 
     return camera;
@@ -39,12 +39,12 @@ function buildCamera() {
 function buildRenderer() {
     const renderer = new THREE.WebGLRenderer({
         antialias: true,
-        alpha:     true
+        alpha: true
     });
 
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.gammaInput        = true;
-    renderer.gammaOutput       = true;
+    renderer.gammaInput = true;
+    renderer.gammaOutput = true;
     renderer.shadowMap.enabled = true;
 
     return renderer;
@@ -61,15 +61,15 @@ function initLights(app) {
     light1.color.setHSL(0.6, 1, 0.9375);
     light1.position.set(50, 175, 100);
     light1.position.multiplyScalar(1.3);
-    light1.castShadow           = true;
-    light1.shadowMapWidth       = 2048;
-    light1.shadowMapHeight      = 2048;
-    light1.shadowCameraTop      = d;
-    light1.shadowCameraLeft     = -d;
-    light1.shadowCameraBottom   = -d;
-    light1.shadowCameraRight    = d;
-    light1.shadowCameraFar      = 1000;
-    light1.shadowDarkness       = 0.5;
+    light1.castShadow = true;
+    light1.shadowMapWidth = 2048;
+    light1.shadowMapHeight = 2048;
+    light1.shadowCameraTop = d;
+    light1.shadowCameraLeft = -d;
+    light1.shadowCameraBottom = -d;
+    light1.shadowCameraRight = d;
+    light1.shadowCameraFar = 1000;
+    light1.shadowDarkness = 0.5;
 
     scene.add(light1);
 

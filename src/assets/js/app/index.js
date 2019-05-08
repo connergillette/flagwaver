@@ -182,7 +182,7 @@ var app;
         $.extend(flagWaverOpts.flag, flagWaverDefaults.flag, flagOpts);
 
         setFlagOpts({
-            imgSrc: flagWaverOpts.flag.imgURL || './assets/img/KA_flag.png',
+            imgSrc: flagWaverOpts.flag.imgURL || './assets/img/KA_Flag.png',
             topEdge: flagWaverOpts.flag.topEdge,
             hoisting: flagWaverOpts.flag.hoisting
         });

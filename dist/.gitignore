@@ -201,3 +201,5 @@ GitHub.sublime-settings
 #
 # Project gitignore
 #
+
+/dist

@@ -25,7 +25,7 @@
   },
   "main": "gulpfile.babel.js",
   "scripts": {
-    "start": "gulp",
+    "start": "",
     "build": "gulp build --production",
     "deploy": "gulp build --production && git-directory-deploy --directory dist --branch gh-pages",
     "deploy-test": "gulp build --production && git-directory-deploy --directory dist --branch gh-pages --repo flagwavertest"
